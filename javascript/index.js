@@ -1,5 +1,5 @@
-const requestCharactersUrl = "https://dragonball-api.com/api/characters" ;
-const requestPlanetsUrl = "https://dragonball-api.com/api/planets" ;
+const requestCharactersUrl = "https://dragonball-api.com/api/characters?limit=58" ;
+const requestPlanetsUrl = "https://dragonball-api.com/api/planets?limit=20" ;
 
 async function fetchApiDragonBallCard(requestUrl) {
     try{
@@ -18,7 +18,7 @@ async function fetchApiDragonBallCard(requestUrl) {
 function createDragonBallCharacter({name, ki, maxKi, gender, affiliation, race, description, image}){
     return `
         <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
+            <div class="row characterCard g-0">
                 <div class="col-md-4">
                 <img src="${image}" class="img-fluid rounded-start" alt="${name}">
                 </div>
@@ -27,14 +27,13 @@ function createDragonBallCharacter({name, ki, maxKi, gender, affiliation, race, 
                         <h5 class="card-title">${name}</h5>
                         <h6 class="card-title">${ki}, ${maxKi}</h6>
                         <p class="card-text">${description}</p>
-                        <p class="card-text"><small class="text-body-secondary">${race}</small></p>
-                        <p class="card-text"><small class="text-body-secondary">${gender}</small></p>
-                        <p class="card-text"><small class="text-body-secondary">${affiliation}</small></p>
+                        <p class="card-text">${race}</small></p>
+                        <p class="card-text">${gender}</small></p>
+                        <p class="card-text">${affiliation}</p>
                     </div>
                 </div>
             </div>
-        </div>
-    `
+        </div>`
 }
 
 async function displayCharacters(){
@@ -42,7 +41,7 @@ async function displayCharacters(){
     const characterInfo = await fetchApiDragonBallCard(requestCharactersUrl);
 
     if(characterInfo && characterInfo.items){
-        const characterCard = characterInfo.items.map(createDragonBallCharacter);
+        const characterCard = characterInfo.items.map(createDragonBallCharacter).join("");
         displayCharacterSection.innerHTML = characterCard;
 
     }
@@ -59,7 +58,7 @@ displayCharacters();
 function createDragonBallPlanet({name, isDestroyed, description, image}){
     return `
         <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
+            <div class="row planetCard g-0">
                 <div class="col-md-4">
                 <img src="${image}" class="img-fluid rounded-start" alt="${name}">
                 </div>
@@ -80,7 +79,7 @@ async function displayPlanets(){
     const planetInfo = await fetchApiDragonBallCard(requestPlanetsUrl);
 
     if(planetInfo && planetInfo.items){
-        const planetCard = planetInfo.items.map(createDragonBallPlanet);
+        const planetCard = planetInfo.items.map(createDragonBallPlanet).join("");
         displayPlanetSection.innerHTML = planetCard;
 
     }
