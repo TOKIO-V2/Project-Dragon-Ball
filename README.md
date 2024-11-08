@@ -1,5 +1,10 @@
 # Project-Dragon-Ball
 
+This  is the result of the project:
+![capDragonballProject1](https://github.com/user-attachments/assets/2ecff5a2-11fc-4f57-8cb4-1bb2560dfaa8)
+![capDragonballProject2](https://github.com/user-attachments/assets/a4d0e409-d583-49ff-9419-a5f34f7196f0)
+
+
 >[!CAUTION]
 >Please read all the points of the README in order to make good use of the project. Thank you.
 ## Introduction.
